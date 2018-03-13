@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreditSuisse.Tech.BusinessLogic\CreditSuisse.Tech.BusinessLogic.csproj">
+      <Project>{c61d464a-c30e-4c46-85df-063af218449a}</Project>
+      <Name>CreditSuisse.Tech.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,5 +44,11 @@
     <Compile Include="IDrawable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj">
+      <Project>{92c571bd-377b-43ff-a828-c09ff51b0f47}</Project>
+      <Name>CreditSuisse.Tech.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
