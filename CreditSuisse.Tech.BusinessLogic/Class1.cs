@@ -69,35 +69,23 @@ namespace CreditSuisse.Tech.BusinessLogic
             Canvas[3].Line.Replace(' ', 'x', 6,1);
             Canvas[4].Line.Replace(' ', 'x', 6, 1);
 
+
+            //Print Rectangle
+            //R 14 1 18 3
+            Canvas[1].Line.Replace(' ', 'x', 14, 5);
+            Canvas[3].Line.Replace(' ', 'x', 14, 5);
+
+
+            Canvas[2].Line.Replace(' ', 'x', 14, 1);
+            Canvas[2].Line.Replace(' ', 'x', 18, 1);
+
+
             foreach (var item in Canvas)
             {
                 Console.WriteLine(item.Line);
             }
             
-
-            
-
-            //StringBuilder CanvasBuilder = new StringBuilder();
-            //StringBuilder LineBuilder = new StringBuilder() ;
-            //LineBuilder.Insert(0, "-", 20);
-            //CanvasBuilder.AppendLine(LineBuilder.ToString());
-
-            //var c = new StringBuilder() ;
-            //c.Insert(0, "|").Insert(1, " ",18).Insert(19,"|").ToString();
-            //CanvasBuilder.AppendLine(c.ToString());
-            //CanvasBuilder.AppendLine(c.ToString());
-            //CanvasBuilder.AppendLine(c.ToString());
-            //CanvasBuilder.AppendLine(c.ToString());
-            //CanvasBuilder.AppendLine(LineBuilder.ToString());
-
-
-            //Update to Up
-            //Update to Down
-
-
-
-
-            //List<string> items = CanvasBuilder.ToString().Split(System.Environment.NewLine.ToCharArray()).ToList();
+                
 
 
 
