@@ -40,13 +40,11 @@ namespace CreditSuisse.Tech.BusinessLogic
 
 
 
-
-
-
         }
 
         public void PrintCanvas()
         {
+            // Create Canvas
             Canvas = new List<DataLine> {
 
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
@@ -89,14 +87,12 @@ namespace CreditSuisse.Tech.BusinessLogic
             //Fill Current - Down
             LinearFill(10, 4);
 
+            //Vertical Fill
+            VerticalFill(0, 0, 'o');
             foreach (var item in Canvas)
             {
                 Console.WriteLine(item.Line);
             }
-
-
-
-
 
             Console.Read();
 
@@ -133,7 +129,29 @@ namespace CreditSuisse.Tech.BusinessLogic
             Backword(Next, y);
 
         }
-
+        public int VerticalFill(int x,int y, char color)
+        {
+            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && Canvas[y + 1].Line[x].Equals(color))
+            {
+                Canvas[y].Line[x] = color;
+                y = 0;
+                VerticalFill(x, y, color);
+            }
+            else if (y < Canvas.Count-1)
+            {
+                y++;
+                return VerticalFill(x, y, color);
+            }
+            else if (x < Canvas[y].Line.Length - 1)
+            {
+                x++;
+                y = 0;
+                return VerticalFill(x, y, color);
+            }
+            return 0;
+                
+        }
+        // || y!=0 && Canvas[y - 1].Line[x].Equals(color)
 
     }
 
