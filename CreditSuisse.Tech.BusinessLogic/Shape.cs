@@ -8,11 +8,13 @@ namespace CreditSuisse.Tech.BusinessLogic
 {
     public class Shape
     {
-        public IDrawable CaractorPrinter { get; set; }
+        public IDrawable DrawUtility { get; set; }
         public Shape()
         {
-            CaractorPrinter = new DrawUtility();
+            DrawUtility = new DrawUtility();
         }
-        void Draw(List<DataLine> listOfDataLines) => CaractorPrinter.Draw(listOfDataLines);
+        
+        void Draw(List<DataLine> listOfDataLines) => DrawUtility.Draw(listOfDataLines);
     }
+    
 }
