@@ -6,9 +6,5 @@ using System.Threading.Tasks;
 
 namespace CreditSuisse.Tech.Entities
 {
-    class Canvas
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
-    }
+    public class Canvas<T> where T: List<DataLine>, new(){}
 }

@@ -20,11 +20,7 @@ namespace CreditSuisse.Tech.BusinessLogic
             PositionsX = new int[] { 1, 2, 3, 4 };
             PositionsY = new int[] { 1, 2, 3, 4 };
 
-            List<Rectangle> Shapes = new List<Rectangle> {
-                    new Rectangle{},
-                    new Rectangle{}
-            };
-
+           
 
             List<DataLine> Canvas = new List<DataLine> {
 

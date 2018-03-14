@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreditSuisse.Tech.Entities
+namespace CreditSuisse.Tech.BusinessLogic
 {
-    public class Rectangle
+    public class Line : Shape
     {
-        ///public T  UpperLeft { get; set; } : where T , new()
+
     }
 }

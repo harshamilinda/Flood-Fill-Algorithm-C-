@@ -40,9 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CanvasBuilder.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DrawUtility.cs" />
+    <Compile Include="ICanvasFactory.cs" />
     <Compile Include="IDrawable.cs" />
+    <Compile Include="IGeometry.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="LineBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shape.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj">
