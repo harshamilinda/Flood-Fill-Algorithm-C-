@@ -131,7 +131,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         public int VerticalFill(int x,int y, char color)
         {
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && Canvas[y + 1].Line[x].Equals(color))
+            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && ( Canvas[y + 1].Line[x].Equals(color) || y != 0 && Canvas[y - 1].Line[x].Equals(color)))
             {
                 Canvas[y].Line[x] = color;
                 y = 0;
