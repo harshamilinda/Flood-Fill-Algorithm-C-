@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.Entities;
 
@@ -34,7 +35,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private char[] FormatCommandText(string commandText)
         {
-            commandText.Replace(" ", string.Empty);
+            commandText =  Regex.Replace(commandText, @"\s+", string.Empty);
             return commandText.ToCharArray();
         }
 
