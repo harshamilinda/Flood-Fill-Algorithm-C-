@@ -28,8 +28,8 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
         {
-            int Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            int Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
+            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
+            var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
             
             while (Y1 <= Y2)
             {
