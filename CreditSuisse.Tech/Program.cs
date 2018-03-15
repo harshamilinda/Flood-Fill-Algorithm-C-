@@ -12,7 +12,7 @@ namespace CreditSuisse.Tech
         static void Main(string[] args)
         {
             new Class1().PrintCanvas();
-            
+            new Line().DrawLine(new string[]{ "C 20 4", "L 1 2 6 2" });
 
             
             

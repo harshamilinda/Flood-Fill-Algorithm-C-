@@ -12,11 +12,12 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
                 
         }
-        public void DrawLine(string command)
+        public void DrawLine(string[] commands)
         {
             IGeometry LineBuilder = new LineBuilder();
-            base.DrawUtility.FormatCommandText(command);
-            //base.DrawUtility.Draw()
+            base.Draw(LineBuilder, commands);
+
+            
         }
     }
 }

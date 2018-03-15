@@ -14,17 +14,6 @@ namespace CreditSuisse.Tech.BusinessLogic
             Console.Read();
         }
 
-        public char[] FormatCommandText(string commandText)
-        {
-            commandText.Replace(" ", string.Empty);
-            return commandText.ToCharArray();
-        }
-
-        public bool ValidateDrawCommand(string commandText)
-        {
-            //TODO: add proper validations
-            if (String.IsNullOrWhiteSpace(commandText))return false;
-            return true;
-        }
+        
     }
 }

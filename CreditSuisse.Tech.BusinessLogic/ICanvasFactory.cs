@@ -7,8 +7,8 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    interface ICanvasFactory 
+    public  interface ICanvasFactory 
     {
-       T BuildCanvas<T>()  where T : List<DataLine>, new();
+       T GetCanvas<T>(string instructions)  where T :  List<DataLine> , new();
     }
 }

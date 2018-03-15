@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="CanvasBuilder.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CommandBuilder.cs" />
     <Compile Include="DrawUtility.cs" />
     <Compile Include="ICanvasFactory.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="IGeometry.cs" />
     <Compile Include="Line.cs" />

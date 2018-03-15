@@ -9,7 +9,6 @@ namespace CreditSuisse.Tech.BusinessLogic
     public interface IDrawable
     {
         void Draw<T>(T listOfDataLines) where T : List<DataLine>, new();
-        bool ValidateDrawCommand(string commandText);
-        char[] FormatCommandText(string commandText);
+        
     }
 }
