@@ -22,7 +22,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
             //TODO: Optimize
            
-            var Canvas = CanvasBuilder.GetCanvas<List<DataLine>>(commands[0]);
+            var Canvas = BusinessLogic.Canvas.GetCanvas<List<DataLine>>(commands[0]);
             var Instructions  = CommandBuilder.GetInstructions(commands[1]);
             var Geomatry = geometryBuilder.BuildGeometry(Canvas, Instructions);
 

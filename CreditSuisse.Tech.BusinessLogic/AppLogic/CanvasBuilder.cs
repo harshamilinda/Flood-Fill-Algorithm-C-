@@ -7,14 +7,14 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    public class CanvasBuilder 
+    public class Canvas 
     {
-        private List<DataLine> Canvas { get; set; }
+        private List<DataLine> CanvasContext { get; set; }
         private string Instructions { get; set; }
 
-        private CanvasBuilder(string instructions)
+        private Canvas(string instructions)
         {
-            if (Canvas == null || Instructions != instructions)
+            if (CanvasContext == null || Instructions != instructions)
             {
                 BuildCanvas(instructions);
             }
@@ -22,7 +22,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         private void BuildCanvas(string instructions)
         {
             //TODO: imlement proper code for canvas build
-            Canvas = new List<DataLine> {
+            CanvasContext = new List<DataLine> {
 
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
                 new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
@@ -35,7 +35,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         public static T GetCanvas<T>(string instructions) where T : List<DataLine>, new()
         {
-            return new CanvasBuilder(instructions).Canvas as T;
+            return new Canvas(instructions).CanvasContext as T;
 
            
         }

@@ -40,18 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CanvasBuilder.cs" />
+    <Compile Include="AppLogic\CanvasBuilder.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="CommandBuilder.cs" />
-    <Compile Include="DrawUtility.cs" />
-    <Compile Include="ICanvasFactory.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="IGeometry.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="LineBuilder.cs" />
+    <Compile Include="AppLogic\CommandBuilder.cs" />
+    <Compile Include="AppLogic\DrawUtility.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IGeometry.cs" />
+    <Compile Include="BusinessObjects\Line.cs" />
+    <Compile Include="AppLogic\LineBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shape.cs" />
+    <Compile Include="BusinessObjects\Rectangle.cs" />
+    <Compile Include="BusinessObjects\Shape.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj">

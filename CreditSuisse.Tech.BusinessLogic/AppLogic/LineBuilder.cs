@@ -19,7 +19,8 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
         {
-            canvas[2].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, 
+            var Index = int.Parse(instructions[ConsoleCommand.Y1].ToString());
+            canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, 
                                     int.Parse(instructions[ConsoleCommand.X1].ToString()),
                                     int.Parse(instructions[ConsoleCommand.X2].ToString()));
             return canvas;
