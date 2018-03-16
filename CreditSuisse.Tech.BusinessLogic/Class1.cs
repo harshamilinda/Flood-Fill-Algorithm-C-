@@ -90,7 +90,7 @@ namespace CreditSuisse.Tech.BusinessLogic
                 Console.WriteLine(item.Line);
             }
 
-            Console.Read();
+            
 
         }
         public bool Forward(int x, int y)

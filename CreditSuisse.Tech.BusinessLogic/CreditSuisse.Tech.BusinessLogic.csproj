@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppLogic\CanvasBuilder.cs" />
+    <Compile Include="AppLogic\Canvas.cs" />
     <Compile Include="AppLogic\RectangleBuilder.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="AppLogic\CommandBuilder.cs" />
