@@ -16,8 +16,6 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
             IGeometry LineBuilder = new LineBuilder();
             base.Draw(LineBuilder, commands);
-
-            
         }
     }
 }
