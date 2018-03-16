@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.Entities;
 
-namespace CreditSuisse.Tech.BusinessLogic.AppLogic
+namespace CreditSuisse.Tech.BusinessLogic
 {
     class RectangleBuilder : IGeometry
     {
@@ -18,10 +18,10 @@ namespace CreditSuisse.Tech.BusinessLogic.AppLogic
         }
         private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) - 1;
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
             var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
-            var Length = (Y2 - Y1) + 1;
+            var Length = (Y1 - Y2) + 1;
 
             canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, Length);
             canvas[Y2].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, Length);
@@ -30,8 +30,8 @@ namespace CreditSuisse.Tech.BusinessLogic.AppLogic
         }
         private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) - 1;
-            var X2 = int.Parse(instructions[ConsoleCommand.X2].ToString()) - 1;
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
+            var X2 = int.Parse(instructions[ConsoleCommand.X2].ToString()) ;
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
             var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
 
