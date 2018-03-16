@@ -7,15 +7,15 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    public sealed class Canvas
+    public sealed class CanvasBuilder
     {
-        private static readonly Lazy<Canvas> lazy =
-            new Lazy<Canvas>(() => new Canvas());
+        private static readonly Lazy<CanvasBuilder> lazy =
+            new Lazy<CanvasBuilder>(() => new CanvasBuilder());
 
-        public static Canvas Instance { get { return lazy.Value; } }
+        public static CanvasBuilder Instance { get { return lazy.Value; } }
         private List<DataLine> CanvasContext { get; set; }
         private static string Instructions;
-        private Canvas()
+        private CanvasBuilder()
         {
             Console.WriteLine("Initiated Canvas");
             BuildCanvas(Instructions);
