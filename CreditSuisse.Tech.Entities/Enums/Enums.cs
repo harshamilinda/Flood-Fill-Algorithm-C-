@@ -8,9 +8,13 @@ namespace CreditSuisse.Tech.Entities
 {
     public enum ConsoleCommand
     {
-       ObjectType, X1, Y1, X2,Y2,Colour
+        ObjectType, X1, Y1, X2, Y2, Colour
     }
-  
+    public enum ActionType
+    {
+        B,C,L,R,Q
+    }
+
 
 
 }

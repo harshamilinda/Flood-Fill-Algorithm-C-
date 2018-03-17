@@ -9,14 +9,14 @@ namespace CreditSuisse.Tech.BusinessLogic
 {
     class RectangleBuilder : IGeometry
     {
-        public T BuildGeometry<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
+        public T BuildGeometry<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
             HorizontalPrint(canvas, instructions);
             VerticalPrint(canvas, instructions);
             return canvas;
-
         }
-        private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
+
+        private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
             var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
@@ -28,7 +28,7 @@ namespace CreditSuisse.Tech.BusinessLogic
 
             return canvas;
         }
-        private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, char> instructions) where T : List<DataLine>, new()
+        private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
             var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
             var X2 = int.Parse(instructions[ConsoleCommand.X2].ToString()) ;

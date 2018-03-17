@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E4C57CB9-0594-458B-87E8-F21CE24BF7AB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CreditSuisse.Tech</RootNamespace>
-    <AssemblyName>CreditSuisse.Tech</AssemblyName>
+    <ProjectGuid>{03EE5E23-2430-4515-8CEE-CE604C382D5A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CreditSuisse.Tech.CommandHandler</RootNamespace>
+    <AssemblyName>CreditSuisse.Tech.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,19 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Command\CommandBuilder.cs" />
+    <Compile Include="Command\CommandUtility.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Invoker\Invoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receiver\IReceiver.cs" />
+    <Compile Include="Receiver\RectangleReceiver.cs" />
+    <Compile Include="Receiver\LineReceiver.cs" />
+    <Compile Include="Receiver\CanvasReceiver.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Client\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CreditSuisse.Tech.Domain\CreditSuisse.Tech.CommandHandler.csproj">
-      <Project>{03ee5e23-2430-4515-8cee-ce604c382d5a}</Project>
-      <Name>CreditSuisse.Tech.CommandHandler</Name>
+    <ProjectReference Include="..\CreditSuisse.Tech.BusinessLogic\CreditSuisse.Tech.BusinessLogic.csproj">
+      <Project>{c61d464a-c30e-4c46-85df-063af218449a}</Project>
+      <Name>CreditSuisse.Tech.BusinessLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj">
       <Project>{92c571bd-377b-43ff-a828-c09ff51b0f47}</Project>

@@ -7,20 +7,16 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    public class Shape
+    public class Canvas
     {
         private IDrawable DrawUtility { get; set; }
-        public Shape() => DrawUtility = new DrawUtility();
+        public Canvas() => DrawUtility = new DrawUtility();
 
-        protected void Draw(IGeometry geometryBuilder,Dictionary<ConsoleCommand, string> instructions)
+        protected void Draw(IGeometry geometryBuilder, Dictionary<ConsoleCommand, string> instructions)
         {
             var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
-            var Geomatry = geometryBuilder.BuildGeometry(Canvas, instructions);
-            DrawUtility.Draw(Geomatry);
+            DrawUtility.Draw(Canvas);
 
         }
-
-     
     }
-    
 }

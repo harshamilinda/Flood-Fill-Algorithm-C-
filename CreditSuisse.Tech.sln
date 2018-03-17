@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditSuisse.Tech.UnitTest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditSuisse.Tech.Entities", "CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj", "{92C571BD-377B-43FF-A828-C09FF51B0F47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditSuisse.Tech.CommandHandler", "CreditSuisse.Tech.Domain\CreditSuisse.Tech.CommandHandler.csproj", "{03EE5E23-2430-4515-8CEE-CE604C382D5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{92C571BD-377B-43FF-A828-C09FF51B0F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92C571BD-377B-43FF-A828-C09FF51B0F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92C571BD-377B-43FF-A828-C09FF51B0F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03EE5E23-2430-4515-8CEE-CE604C382D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03EE5E23-2430-4515-8CEE-CE604C382D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03EE5E23-2430-4515-8CEE-CE604C382D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03EE5E23-2430-4515-8CEE-CE604C382D5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

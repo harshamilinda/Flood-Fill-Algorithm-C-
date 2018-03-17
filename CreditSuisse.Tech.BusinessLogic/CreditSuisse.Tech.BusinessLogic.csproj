@@ -42,10 +42,9 @@
   <ItemGroup>
     <Compile Include="AppLogic\CanvasBuilder.cs" />
     <Compile Include="AppLogic\RectangleBuilder.cs" />
+    <Compile Include="BusinessObjects\Canvas.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="AppLogic\CommandBuilder.cs" />
     <Compile Include="AppLogic\DrawUtility.cs" />
-    <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Interfaces\IGeometry.cs" />
     <Compile Include="BusinessObjects\Line.cs" />

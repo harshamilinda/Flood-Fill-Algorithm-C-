@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
@@ -12,10 +13,10 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
                 
         }
-        public void DrawLine(string[] commands)
+        public void DrawLine(Dictionary<ConsoleCommand, string> instructions)
         {
             IGeometry LineBuilder = new LineBuilder();
-            base.Draw(LineBuilder, commands);
+            base.Draw(LineBuilder, instructions);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
@@ -11,10 +12,10 @@ namespace CreditSuisse.Tech.BusinessLogic
         public Rectangle() : base()
         {
         }
-        public void DrawRectangle(string[] commands)
+        public void DrawRectangle(Dictionary<ConsoleCommand, string> instructions)
         {
             IGeometry RectangleBuilder = new RectangleBuilder();
-            base.Draw(RectangleBuilder, commands);
+            base.Draw(RectangleBuilder, instructions);
 
 
         }
