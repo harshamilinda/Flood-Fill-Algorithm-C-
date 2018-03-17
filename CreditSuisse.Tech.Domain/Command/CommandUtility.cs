@@ -23,6 +23,7 @@ namespace CreditSuisse.Tech.CommandHandler
         private bool ValidateDrawCommand(string commandText)
         {
             //TODO: add proper validations
+            //X1,X2,Y1,Y2 - int , cannot < 0,  x1 shoud < x1, y1 should <y2
             if (String.IsNullOrWhiteSpace(commandText)) return false;
             return true;
         }
