@@ -9,10 +9,10 @@ namespace CreditSuisse.Tech.CommandHandler
     public class Invoker
     {
         public ICommand Command { get; set; }
-
-        public void ExecuteCommand()
+        public Invoker() => Command = new CommandBuilder();
+        public void ExecuteCommand(string commandText)
         {
-            //Command.Execute();
+            Command.Execute(commandText);
         }
         
 

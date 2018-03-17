@@ -16,8 +16,6 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
             IGeometry RectangleBuilder = new RectangleBuilder();
             base.Draw(RectangleBuilder, instructions);
-
-
         }
     }
 }

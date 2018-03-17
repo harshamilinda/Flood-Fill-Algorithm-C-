@@ -18,7 +18,7 @@ namespace CreditSuisse.Tech.CommandHandler
             {
                {ActionType.C, new CanvasReceiver()},
                {ActionType.L,new LineReceiver()},
-               {ActionType.R,new RectangleReceiver()},
+               {ActionType.R,new RectangleReceiver()}
             };
 
         }

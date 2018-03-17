@@ -45,6 +45,7 @@
     <Compile Include="BusinessObjects\Canvas.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="AppLogic\DrawUtility.cs" />
+    <Compile Include="Extentions\LoopUtilities.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
     <Compile Include="Interfaces\IGeometry.cs" />
     <Compile Include="BusinessObjects\Line.cs" />

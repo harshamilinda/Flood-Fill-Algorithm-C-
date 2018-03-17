@@ -10,6 +10,5 @@ namespace CreditSuisse.Tech.BusinessLogic
     public interface IGeometry
     {
         T BuildGeometry<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new();
-        
     }
 }

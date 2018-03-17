@@ -9,8 +9,7 @@ namespace CreditSuisse.Tech.BusinessLogic
 {
     public sealed class CanvasBuilder
     {
-        private static readonly Lazy<CanvasBuilder> lazy =
-            new Lazy<CanvasBuilder>(() => new CanvasBuilder());
+        private static readonly Lazy<CanvasBuilder> lazy = new Lazy<CanvasBuilder>(() => new CanvasBuilder());
 
         public static CanvasBuilder Instance { get { return lazy.Value; } }
         private List<DataLine> CanvasContext { get; set; }
@@ -22,21 +21,23 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private void BuildCanvas(Dictionary<ConsoleCommand, string> instructions)
         {
-            //TODO: imlement proper code for canvas build
-            CanvasContext = new List<DataLine> {
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
+            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
 
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
-
-            };
+            CanvasContext = new List<DataLine> { };
+            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CanvasHorizontalLine.ToString(), X1) });
+            Y1.Times(() => CanvasContext.Add(new DataLine
+            {
+                Line = new StringBuilder()
+                            .Insert(0, Constants.CanvasVerticalLine)
+                            .Insert(1, " ", X1 - 2).Insert(X1 - 1, Constants.CanvasVerticalLine)
+            }));
+            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CanvasHorizontalLine.ToString(), X1) });
         }
         public static T GetCanvas<T>(Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            Instructions = instructions;
+            if (instructions[ConsoleCommand.ObjectType].ToString() == ActionType.C.ToString())
+                Instructions = instructions;
             return Instance.CanvasContext as T;
 
         }
