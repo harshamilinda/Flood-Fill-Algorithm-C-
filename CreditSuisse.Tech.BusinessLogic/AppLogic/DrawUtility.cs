@@ -12,6 +12,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
             listOfEntities.ForEach(item => Console.WriteLine(item.Line));
             Console.Read();
+            
         }
 
         
