@@ -9,9 +9,9 @@ namespace CreditSuisse.Tech
 {
     public class Client
     {
-        public void Start()
+        public void InvokeCommand(string commandText)
         {
-            new Invoker().ExecuteCommand("asd");
+            new Invoker().ExecuteCommand(commandText);
             
         }
     }

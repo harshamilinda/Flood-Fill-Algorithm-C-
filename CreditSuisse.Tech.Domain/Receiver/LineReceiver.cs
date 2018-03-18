@@ -10,16 +10,7 @@ namespace CreditSuisse.Tech.CommandHandler
 {
     public class LineReceiver : IReceiver
     {
-        
-        public LineReceiver()
-        {
-           
-        }
-
-
-        public void Action(Dictionary<ConsoleCommand, string> instructions)
-        {
-            //new Line().DrawLine();
-        }
+        public LineReceiver() { }
+        public void Action(Dictionary<ConsoleCommand, string> instructions) => new Line().DrawLine(instructions);
     }
 }

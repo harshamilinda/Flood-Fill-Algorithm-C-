@@ -12,7 +12,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         private IDrawable DrawUtility { get; set; }
         public Canvas() => DrawUtility = new DrawUtility();
 
-        protected void Draw(IGeometry geometryBuilder, Dictionary<ConsoleCommand, string> instructions)
+        public void Draw(Dictionary<ConsoleCommand, string> instructions)
         {
             var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
             DrawUtility.Draw(Canvas);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.CommandHandler;
-using CreditSuisse.Tech.Entities;
+
 
 namespace CreditSuisse.Tech
 {
@@ -17,9 +17,7 @@ namespace CreditSuisse.Tech
             //new Line().DrawLine(new string[] { "C 20 4", "L 1 3 6 3" });
 
             //new Rectangle().DrawRectangle(new string[] { "C 20 4", "R 14 1 18 3" });
-
-            //R 14 1 18 3
-            ActionType.GetName(typeof(ConsoleCommand), ConsoleCommand.ObjectType);
+            new Client().InvokeCommand(Console.ReadLine());
             Console.Read();
 
         }

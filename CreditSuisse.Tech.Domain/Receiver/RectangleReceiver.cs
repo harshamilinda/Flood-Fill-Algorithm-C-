@@ -10,15 +10,7 @@ namespace CreditSuisse.Tech.CommandHandler
 {
     public class RectangleReceiver : IReceiver
     {
-        public RectangleReceiver()
-        {
-        }
-
-       
-
-        public void Action(Dictionary<ConsoleCommand, string> instructions)
-        {
-            throw new NotImplementedException();
-        }
+        public RectangleReceiver(){}
+        public void Action(Dictionary<ConsoleCommand, string> instructions) => new Rectangle().DrawRectangle(instructions);
     }
 }
