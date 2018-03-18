@@ -14,6 +14,11 @@ namespace CreditSuisse.Tech.Entities
     {
         B,C,L,R,Q
     }
+    public enum Axis
+    {
+        X1, Y1, X2,Y2
+    }
+    
 
 
 

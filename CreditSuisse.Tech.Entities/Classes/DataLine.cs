@@ -11,4 +11,6 @@ namespace CreditSuisse.Tech.Entities
         public StringBuilder Line { get; set; }
     }
    
+
+
 }

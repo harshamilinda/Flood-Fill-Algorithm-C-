@@ -11,31 +11,25 @@ namespace CreditSuisse.Tech.BusinessLogic
     {
         public T BuildGeometry<T>(T canvas, Dictionary<ConsoleCommand, string> instructions ) where T : List<DataLine>, new()
         {
-            if(instructions[ConsoleCommand.Y1]==instructions[ConsoleCommand.Y2]) 
-                HorizontalPrint(canvas, instructions); // L 1 2 6 2
-            else
-               VerticalPrint(canvas, instructions); // L 6 3 6 4
+            if(instructions[ConsoleCommand.Y1]==instructions[ConsoleCommand.Y2]) HorizontalPrint(canvas, instructions); 
+            else VerticalPrint(canvas, instructions); 
             return canvas;
         }
+
         private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
-            var X2= int.Parse(instructions[ConsoleCommand.X2].ToString());
-            canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, X2);
+            var Positions = instructions.GetPositions();
+            canvas[Positions[Axis.Y1]].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X1], Positions[Axis.X2]);
             return canvas;
         }
 
         private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
-            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
-            
-            while (Y1 <= Y2)
+            var Positions = instructions.GetPositions();
+            while (Positions[Axis.Y1] <= Positions[Axis.Y2])
             {
-                canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, 1);
-                Y1++;
+                canvas[Positions[Axis.Y1]].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X1], 1);
+                Positions[Axis.Y1]++;
             }
             return canvas;
         }
