@@ -106,14 +106,14 @@ namespace CreditSuisse.Tech.BusinessLogic
             }
             return true;
         }
-        public bool Backword(int x, int y)
+        public bool Backward(int x, int y)
         {
             //Flood Fill
             if (Char.IsWhiteSpace(Canvas[y].Line[x]))
             {
                 Canvas[y].Line.Replace(' ', 'o', x, 1);
                 x++;
-                if (x != 19) return Backword(x, y);
+                if (x != 19) return Backward(x, y);
             }
             return true;
         }
@@ -122,7 +122,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         {
             int Next = x + 1;
             Forward(x, y);
-            Backword(Next, y);
+            Backward(Next, y);
 
         }
         public int VerticalFill(int x,int y, char color)

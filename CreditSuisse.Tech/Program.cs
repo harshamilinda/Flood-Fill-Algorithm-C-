@@ -12,14 +12,15 @@ namespace CreditSuisse.Tech
     {
         static void Main(string[] args)
         {
-            //new Class1().PrintCanvas();
-            //new Line().DrawLine(new string[]{ "C 20 4", "L 1 2 6 2" });
-            //new Line().DrawLine(new string[] { "C 20 4", "L 1 3 6 3" });
+            var Client = new Client();
+            while(true)
+            {
+                Client.InvokeCommand(Console.ReadLine());
+               
+            }
+           
 
-            //new Rectangle().DrawRectangle(new string[] { "C 20 4", "R 14 1 18 3" });
-            new Client().InvokeCommand(Console.ReadLine());
-            Console.Read();
-
+           
         }
     }
 }
