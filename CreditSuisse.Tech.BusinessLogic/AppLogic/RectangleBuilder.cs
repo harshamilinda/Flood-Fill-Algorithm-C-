@@ -18,11 +18,13 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
-            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
-            var Length = (Y2 - Y1) + 1;
+            var X1 = int.Parse(instructions[ConsoleCommand.X1]);
+            var X2 = int.Parse(instructions[ConsoleCommand.X2]);
+            var Y1 = int.Parse(instructions[ConsoleCommand.Y1]);
+            var Y2 = int.Parse(instructions[ConsoleCommand.Y2]);
+            var Length = (X2 - X1)+1;
 
+            X1--;
             canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, Length);
             canvas[Y2].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, Length);
 
@@ -30,17 +32,19 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) ;
-            var X2 = int.Parse(instructions[ConsoleCommand.X2].ToString()) ;
-            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
-
-            while (Y1 <= Y2)
-            {
-                canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, 1);
-                canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X2, 1);
-                Y1++;
-            }
+            var X1 = int.Parse(instructions[ConsoleCommand.X1]);
+            var X2 = int.Parse(instructions[ConsoleCommand.X2]);
+            var Y1 = int.Parse(instructions[ConsoleCommand.Y1]);
+            var Y2 = int.Parse(instructions[ConsoleCommand.Y2]);
+            var Length = 1;
+            var Index = Y2 - Y1;
+            X1--;
+            X2--;
+          
+                canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, Length);
+                canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X2, Length);
+              
+            
             return canvas;
         }
     }

@@ -13,18 +13,14 @@ namespace CreditSuisse.Tech
         static void Main(string[] args)
         {
             var Client = new Client();
-            String CommandText = string.Empty;
-            //Client.InvokeCommand(Console.ReadLine());
+            string CommandText = string.Empty;
 
             Boolean IsRunning = true;
             while (IsRunning)
             {
                 CommandText = Console.ReadLine();
-                Console.WriteLine(CommandText);
                 Client.InvokeCommand(CommandText);
             }
-
-
         }
     }
 }
