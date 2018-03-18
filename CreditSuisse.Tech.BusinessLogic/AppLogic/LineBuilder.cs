@@ -19,21 +19,22 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private T HorizontalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
-            var Index = int.Parse(instructions[ConsoleCommand.Y1].ToString());
-            canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, 
-                                    int.Parse(instructions[ConsoleCommand.X1].ToString()),
-                                    int.Parse(instructions[ConsoleCommand.X2].ToString()));
+            var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
+            var X2= int.Parse(instructions[ConsoleCommand.X2].ToString());
+            canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, X2);
             return canvas;
         }
 
         private T VerticalPrint<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
             var Y2 = int.Parse(instructions[ConsoleCommand.Y2].ToString());
             
             while (Y1 <= Y2)
             {
-                canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Y2, 1);
+                canvas[Y1].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, X1, 1);
                 Y1++;
             }
             return canvas;
