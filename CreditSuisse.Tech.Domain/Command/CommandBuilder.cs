@@ -17,8 +17,9 @@ namespace CreditSuisse.Tech.CommandHandler
             CommandContext = new Dictionary<ActionType, IReceiver>
             {
                {ActionType.C, new CanvasReceiver()},
-               {ActionType.L,new LineReceiver()},
-               {ActionType.R,new RectangleReceiver()}
+               {ActionType.B, new FillReceiver()},
+               {ActionType.L, new LineReceiver()},
+               {ActionType.R, new RectangleReceiver()}
             };
 
         }

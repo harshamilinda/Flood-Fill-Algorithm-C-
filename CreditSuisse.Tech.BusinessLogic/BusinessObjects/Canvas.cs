@@ -14,7 +14,7 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         public void Draw(Dictionary<ConsoleCommand, string> instructions)
         {
-            var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
+            var Canvas = CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
             DrawUtility.Draw(Canvas);
 
         }

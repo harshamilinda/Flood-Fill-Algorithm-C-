@@ -27,15 +27,36 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         public static Dictionary<Axis, int> GetPositions(this Dictionary<ConsoleCommand, string> instructions)
         {
-
-           return new Dictionary<Axis, int>()
+            if (instructions.IsFillCommand())
             {
-                {Axis.X1,instructions[ConsoleCommand.X1].ToInt()-1 },
-                {Axis.Y1,instructions[ConsoleCommand.Y1].ToInt() },
-                {Axis.X2,instructions[ConsoleCommand.X2].ToInt()-1 },
-                {Axis.Y2,instructions[ConsoleCommand.Y2].ToInt() }
-            };
+                return new Dictionary<Axis, int>()
+                {
+                    {Axis.X1,instructions[ConsoleCommand.X1].ToInt()},
+                    {Axis.Y1,instructions[ConsoleCommand.Y1].ToInt() }
+                    
+                };
+            }
+            else
+            {
+                return new Dictionary<Axis, int>()
+                {
+                    {Axis.X1,instructions[ConsoleCommand.X1].ToInt()-1 },
+                    {Axis.Y1,instructions[ConsoleCommand.Y1].ToInt() },
+                    {Axis.X2,instructions[ConsoleCommand.X2].ToInt()-1 },
+                    {Axis.Y2,instructions[ConsoleCommand.Y2].ToInt() }
+                };
+            }
+
+           
           
+        }
+        public static bool IsFillCommand(this string value)
+        {
+            return !int.TryParse(value, out int Y2);
+        }
+        public static bool IsFillCommand(this Dictionary<ConsoleCommand, string> instructions)
+        {
+            return instructions.ContainsKey(ConsoleCommand.Colour);
         }
     }
     

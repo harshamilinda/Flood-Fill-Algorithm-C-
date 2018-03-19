@@ -41,12 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppLogic\CanvasBuilder.cs" />
+    <Compile Include="AppLogic\FillUtility.cs" />
     <Compile Include="AppLogic\RectangleBuilder.cs" />
     <Compile Include="BusinessObjects\Canvas.cs" />
+    <Compile Include="BusinessObjects\PaintBucket.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="AppLogic\DrawUtility.cs" />
     <Compile Include="Extentions\Extentions.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IFillable.cs" />
     <Compile Include="Interfaces\IGeometry.cs" />
     <Compile Include="BusinessObjects\Line.cs" />
     <Compile Include="AppLogic\LineBuilder.cs" />

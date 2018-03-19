@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CreditSuisse.Tech.BusinessLogic;
 using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.CommandHandler
@@ -32,6 +33,7 @@ namespace CreditSuisse.Tech.CommandHandler
 
         private T InitializeCommand<T>(string[] commandText) where T : Dictionary<ConsoleCommand, string>, new()
         {
+            
             Dictionary<ConsoleCommand, string> Instructions = new Dictionary<ConsoleCommand, string>();
             var Commands = Enum.GetValues(typeof(ConsoleCommand)).Cast<ConsoleCommand>().GetEnumerator();
             var Values = commandText.GetEnumerator();
@@ -39,8 +41,11 @@ namespace CreditSuisse.Tech.CommandHandler
             {
                 Instructions.Add(Commands.Current, Values.Current.ToString());
             }
+
+            if(commandText[commandText.Length -1].IsFillCommand()) Instructions.Add(ConsoleCommand.Colour, commandText[commandText.Length - 1]);
             return (T)Instructions;
 
         }
+        
     }
 }

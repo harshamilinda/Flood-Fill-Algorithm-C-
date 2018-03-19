@@ -46,6 +46,7 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Invoker\Invoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receiver\FillReceiver.cs" />
     <Compile Include="Receiver\IReceiver.cs" />
     <Compile Include="Receiver\RectangleReceiver.cs" />
     <Compile Include="Receiver\LineReceiver.cs" />
