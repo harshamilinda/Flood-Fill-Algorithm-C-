@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.Entities;
 
-namespace CreditSuisse.Tech.BusinessLogic
+namespace CreditSuisse.Tech.BusinessLogic.AppLogic
 {
-    public class FillUtility : IFillable
+    public class FillUtil
     {
         public List<DataLine> Canvas { get; set; }
         public int X { get; set; }
@@ -24,10 +24,6 @@ namespace CreditSuisse.Tech.BusinessLogic
             Y = Positions[Axis.Y1];
 
 
-            Current(X, Y);
-            //Up(X, Y);
-            //Down(X, Y);
-
 
 
             return canvas;
@@ -35,16 +31,15 @@ namespace CreditSuisse.Tech.BusinessLogic
         private void Current(int x, int y)
         {
             if (Char.IsWhiteSpace(Canvas[y].Line[x])) Canvas[y].Line[x] = FillColour;
-            Backward(x--, y);
-            Forward(x++, y);
+            Backward(x, y);
+            Forward(x, y);
         }
         private void Backward(int x, int y)
         {
-            if (!(x > 0)) return;
+            if (x-- > 0) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x--;
+                Canvas[y].Line[x] = FillColour; x--;
                 Backward(x, y);
             }
         }
@@ -53,14 +48,13 @@ namespace CreditSuisse.Tech.BusinessLogic
             if (x++ < Canvas[y].Line.Length) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x++;
+                Canvas[y].Line[x] = FillColour; x++;
                 Forward(x, y);
             }
         }
         private void Up(int x, int y)
         {
-            while (y > 0)
+            while (y >0)
             {
                 UpNext(x, y);
                 UpPrevious(x, y);
@@ -70,52 +64,49 @@ namespace CreditSuisse.Tech.BusinessLogic
         }
         private void UpPrevious(int x, int y)
         {
-            if (!(x-- > 0 || y-- > 0)) return;
+            if (x-- > 0 || y-- > 0) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y - 1].Line[x].Equals(FillColour) || Canvas[y - 1].Line[x + 1].Equals(FillColour)))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x--;
+                Canvas[y].Line[x] = FillColour; x--;
                 UpPrevious(x, y);
             }
         }
         private void UpNext(int x, int y)
         {
-            if (!(x++ < Canvas[Y].Line.Length || y-- > 0)) return;
+            if (x++ < Canvas[Y].Line.Length || y-- > 0) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y - 1].Line[x].Equals(FillColour) || Canvas[y - 1].Line[x - 1].Equals(FillColour)))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x++;
+                Canvas[y].Line[x] = FillColour; x++;
                 UpNext(x, y);
             }
         }
         private void Down(int x, int y)
         {
-            while (y < Canvas.Count)
+            while(y< Canvas.Count)
             {
                 DownNext(x, y);
                 DownPrevious(x, y);
                 y++;
             }
-
+           
         }
         private void DownPrevious(int x, int y)
         {
-            if (!(x-- > 0 || y++ < Canvas.Count)) return;
+            if (x-- > 0 || y++ < Canvas.Count) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y + 1].Line[x].Equals(FillColour) || Canvas[y + 1].Line[x + 1].Equals(FillColour)))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1); x--;
+                Canvas[y].Line[x] = FillColour; x--;
                 DownPrevious(x, y);
             }
         }
         private void DownNext(int x, int y)
         {
-            if (!(x++ < Canvas[Y].Line.Length || y++ < Canvas.Count)) return;
+            if (x++ < Canvas[Y].Line.Length || y++ < Canvas.Count) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y + 1].Line[x].Equals(FillColour) || Canvas[y + 1].Line[x - 1].Equals(FillColour)))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1); x++;
+                Canvas[y].Line[x] = FillColour; x++;
                 DownNext(x, y);
             }
         }
-
     }
 }

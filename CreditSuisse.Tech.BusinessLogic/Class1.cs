@@ -147,7 +147,7 @@ namespace CreditSuisse.Tech.BusinessLogic
             return 0;
                 
         }
-        // || y!=0 && Canvas[y - 1].Line[x].Equals(color)
+        
 
     }
 

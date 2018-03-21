@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppLogic\CanvasBuilder.cs" />
+    <Compile Include="AppLogic\FillUtil.cs" />
     <Compile Include="AppLogic\FillUtility.cs" />
     <Compile Include="AppLogic\RectangleBuilder.cs" />
     <Compile Include="BusinessObjects\Canvas.cs" />
