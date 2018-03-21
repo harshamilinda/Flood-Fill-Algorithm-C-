@@ -24,36 +24,36 @@ namespace CreditSuisse.Tech.BusinessLogic
             Y = Positions[Axis.Y1];
 
 
-            Current(X, Y);
-            //Up(X, Y);
-            //Down(X, Y);
+            Current();
+            Up(X, Y - 1);
+            Down(X, Y + 1);
 
 
 
             return canvas;
         }
-        private void Current(int x, int y)
+        private void Current()
         {
-            if (Char.IsWhiteSpace(Canvas[y].Line[x])) Canvas[y].Line[x] = FillColour;
-            Backward(x--, y);
-            Forward(x++, y);
+            if (Char.IsWhiteSpace(Canvas[Y].Line[X])) Canvas[Y].Line[X] = FillColour;
+            Backward(X - 1, Y);
+            Forward(X + 1, Y);
         }
         private void Backward(int x, int y)
         {
             if (!(x > 0)) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
+                Canvas[y].Line[x] = FillColour;
                 x--;
                 Backward(x, y);
             }
         }
         private void Forward(int x, int y)
         {
-            if (x++ < Canvas[y].Line.Length) return;
+            if (!(x < Canvas[y].Line.Length)) return;
             if (Char.IsWhiteSpace(Canvas[y].Line[x]))
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
+                Canvas[y].Line[x] = FillColour;
                 x++;
                 Forward(x, y);
             }
