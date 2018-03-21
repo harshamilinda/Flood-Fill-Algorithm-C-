@@ -18,8 +18,17 @@ namespace CreditSuisse.Tech
             Boolean IsRunning = true;
             while (IsRunning)
             {
-                CommandText = Console.ReadLine();
-                Client.InvokeCommand(CommandText);
+                //CommandText = Console.ReadLine();
+                //Client.InvokeCommand(CommandText);
+
+
+                //TEST
+                Client.InvokeCommand("C 20 4");
+                Client.InvokeCommand("L 6 3 6 4");
+                Client.InvokeCommand("L 1 2 6 2");
+                Client.InvokeCommand("R 14 1 18 3");
+                //Client.InvokeCommand("B 10 3 o");
+                Client.InvokeCommand("B 17 4 o");
             }
         }
     }

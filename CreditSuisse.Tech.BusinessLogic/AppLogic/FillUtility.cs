@@ -9,69 +9,86 @@ namespace CreditSuisse.Tech.BusinessLogic
 {
     public class FillUtility : IFillable
     {
-        public List<DataLine> Canvas  { get; set; }
-        public Dictionary<Axis,int> Positions { get; set; }
+        public List<DataLine> Canvas { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public char FillColour { get; set; }
         public T Fill<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
             Canvas = canvas;
             FillColour = char.Parse(instructions[ConsoleCommand.Colour]);
-            Positions = instructions.GetPositions();
+            var Positions = instructions.GetPositions();
+            X = Positions[Axis.X1];
+            Y = Positions[Axis.Y1];
             var Length = (Positions[Axis.X1] - Positions[Axis.Y1]) + 1;
-            
-            LinearFill();
-            VerticalFill();
+
+            //Fill Current - UP
+            LinearFill(10, 3);
+            LinearFill(10, 2);
+            LinearFill(10, 1);
+
+            //Fill Current - Down
+            LinearFill(10, 4);
+
+            //Vertical Fill
+            VerticalFill(0, 0, 'o');
             return canvas;
         }
 
-        private void LinearFill()
-        {
-            int Next = Positions[Axis.X1] + 1;
-            Forward(Positions[Axis.X1], Positions[Axis.Y1]);
-            Backward(Next, Positions[Axis.Y1]);
-
-        }
-        private bool Forward(int x, int y)
+        public bool Forward(int x, int y)
         {
             //Flood Fill
             //B 10 3 o
-            Canvas[Positions[Axis.Y1]].Line.Replace(Constants.CharWhiteSpace,FillColour, Positions[Axis.X1], 1);
-            Positions[Axis.X1]--;
-            if (Positions[Axis.X1] != 0) return Forward(Positions[Axis.X1], Positions[Axis.Y1]);
+
+            if (Char.IsWhiteSpace(Canvas[y].Line[x]))
+            {
+                Canvas[y].Line.Replace(' ', 'o', x, 1);
+                x--;
+                if (x != 0) return Forward(x, y);
+            }
             return true;
         }
         public bool Backward(int x, int y)
         {
-            Canvas[Positions[Axis.Y1]].Line.Replace(Constants.CharWhiteSpace, FillColour, Positions[Axis.X1], 1);
-            Positions[Axis.X1]++;
-            if (Positions[Axis.X1] != 19) return Backward(Positions[Axis.X1], Positions[Axis.Y1]);
+            //Flood Fill
+            if (Char.IsWhiteSpace(Canvas[y].Line[x]))
+            {
+                Canvas[y].Line.Replace(' ', 'o', x, 1);
+                x++;
+                if (x != 19) return Backward(x, y);
+            }
             return true;
         }
 
-       
-        public int VerticalFill()
+        public void LinearFill(int x, int y)
         {
-            if (Char.IsWhiteSpace(Canvas[Positions[Axis.Y1]].Line[Positions[Axis.X1]]) 
-                && (Canvas[Positions[Axis.Y1] + 1].Line[Positions[Axis.X1]].Equals(FillColour) 
-                || Positions[Axis.Y1] != 0 && Canvas[Positions[Axis.Y1] - 1].Line[Positions[Axis.X1]].Equals(FillColour)))
+            int Next = x + 1;
+            Forward(x, y);
+            Backward(Next, y);
+
+        }
+        public int VerticalFill(int x, int y, char color)
+        {
+            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y + 1].Line[x].Equals(color) || y != 0 && Canvas[y - 1].Line[x].Equals(color)))
             {
-                Canvas[Positions[Axis.Y1]].Line[Positions[Axis.X1]] = FillColour;
-                Positions[Axis.Y1] = 0; //reset
-                VerticalFill();
+                Canvas[y].Line[x] = color;
+                y = 0;
+                VerticalFill(x, y, color);
             }
-            else if (Positions[Axis.Y1] < Canvas.Count - 1)
+            else if (y < Canvas.Count - 1)
             {
-                Positions[Axis.Y1]++;
-                return VerticalFill();
+                y++;
+                return VerticalFill(x, y, color);
             }
-            else if (Positions[Axis.X1] < Canvas[Positions[Axis.Y1]].Line.Length - 1)
+            else if (x < Canvas[y].Line.Length - 1)
             {
-                Positions[Axis.X1]++;
-                Positions[Axis.Y1] = 0; //reset
-                return VerticalFill();
+                x++;
+                y = 0;
+                return VerticalFill(x, y, color);
             }
             return 0;
 
         }
+
     }
 }
