@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.Entities;
 
+
 namespace CreditSuisse.Tech.BusinessLogic
 {
     public class FillUtility : IFillable
@@ -22,99 +23,90 @@ namespace CreditSuisse.Tech.BusinessLogic
             var Positions = instructions.GetPositions();
             X = Positions[Axis.X1];
             Y = Positions[Axis.Y1];
-
-
-            Current();
-            Up(X, Y - 1);
-            Down(X, Y + 1);
+            var DataPoint = new DataPoint { X = X, Y = Y };
+            Octa(DataPoint);
 
 
 
             return canvas;
         }
-        private void Current()
+
+        private void ProcessDataPoint(int x, int y, Stack<DataPoint> dataPoints)
         {
-            if (Char.IsWhiteSpace(Canvas[Y].Line[X])) Canvas[Y].Line[X] = FillColour;
-            Backward(X - 1, Y);
-            Forward(X + 1, Y);
-        }
-        private void Backward(int x, int y)
-        {
-            if (!(x > 0)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]))
+            // Validate data range
+            if (Canvas.Count > y && Canvas.FirstOrDefault().Line.Length > x)
             {
-                Canvas[y].Line[x] = FillColour;
-                x--;
-                Backward(x, y);
-            }
-        }
-        private void Forward(int x, int y)
-        {
-            if (!(x < Canvas[y].Line.Length)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]))
-            {
-                Canvas[y].Line[x] = FillColour;
-                x++;
-                Forward(x, y);
-            }
-        }
-        private void Up(int x, int y)
-        {
-            while (y > 0)
-            {
-                UpNext(x, y);
-                UpPrevious(x, y);
-                y--;
+                if (char.IsWhiteSpace(Canvas[y].Line[x]))
+                {
+                    Canvas[y].Line[x] = FillColour;
+                    dataPoints.Push(new DataPoint { X = x, Y = y });
+                }
+
             }
 
-        }
-        private void UpPrevious(int x, int y)
-        {
-            if (!(x-- > 0 || y-- > 0)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y - 1].Line[x].Equals(FillColour) || Canvas[y - 1].Line[x + 1].Equals(FillColour)))
-            {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x--;
-                UpPrevious(x, y);
-            }
-        }
-        private void UpNext(int x, int y)
-        {
-            if (!(x++ < Canvas[Y].Line.Length || y-- > 0)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y - 1].Line[x].Equals(FillColour) || Canvas[y - 1].Line[x - 1].Equals(FillColour)))
-            {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1);
-                x++;
-                UpNext(x, y);
-            }
-        }
-        private void Down(int x, int y)
-        {
-            while (y < Canvas.Count)
-            {
-                DownNext(x, y);
-                DownPrevious(x, y);
-                y++;
-            }
+
+
 
         }
-        private void DownPrevious(int x, int y)
+        private void Octa(DataPoint d)
         {
-            if (!(x-- > 0 || y++ < Canvas.Count)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y + 1].Line[x].Equals(FillColour) || Canvas[y + 1].Line[x + 1].Equals(FillColour)))
+            var Items = new Stack<DataPoint>();
+            // is empty
+            if (char.IsWhiteSpace(Canvas[d.Y].Line[d.X]))
+                //fill - only for the fist time
+                Canvas[d.Y].Line[d.X] = FillColour;
+            //do not add
+
+            //is top
+            //if (char.IsWhiteSpace(Canvas[d.Y - 1].Line[d.X]))
+                ProcessDataPoint(d.X, d.Y - 1, Items);
+
+            //is topleft
+            //if (char.IsWhiteSpace(Canvas[d.Y - 1].Line[d.X - 1]))
+                ProcessDataPoint(d.X-1, d.Y - 1, Items);
+            //Fill
+            //Add
+
+
+            //is topright
+            //if (char.IsWhiteSpace(Canvas[d.Y - 1].Line[d.X + 1]))
+                ProcessDataPoint(d.X+1, d.Y - 1, Items);
+
+
+            //previous
+            //if (char.IsWhiteSpace(Canvas[d.Y].Line[d.X - 1]))
+                ProcessDataPoint(d.X-1, d.Y, Items);
+
+
+            //next
+            //if (char.IsWhiteSpace(Canvas[d.Y].Line[d.X + 1]))
+                ProcessDataPoint(d.X + 1, d.Y, Items);
+
+            //down
+            //if (char.IsWhiteSpace(Canvas[d.Y + 1].Line[d.X]))
+                ProcessDataPoint(d.X, d.Y + 1, Items);
+
+
+            //downLeft
+            //if (char.IsWhiteSpace(Canvas[d.Y + 1].Line[d.X - 1]))
+                ProcessDataPoint(d.X - 1, d.Y + 1, Items);
+
+
+            //downright
+            //if (char.IsWhiteSpace(Canvas[d.Y + 1].Line[d.X + 1]))
+                ProcessDataPoint(d.X + 1, d.Y + 1, Items);
+
+
+
+
+            //add to datapoint array
+
+            //Not return 8 all the time
+            while(Items.Count >0)
             {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1); x--;
-                DownPrevious(x, y);
+                Octa(Items.Pop());
             }
-        }
-        private void DownNext(int x, int y)
-        {
-            if (!(x++ < Canvas[Y].Line.Length || y++ < Canvas.Count)) return;
-            if (Char.IsWhiteSpace(Canvas[y].Line[x]) && (Canvas[y + 1].Line[x].Equals(FillColour) || Canvas[y + 1].Line[x - 1].Equals(FillColour)))
-            {
-                Canvas[y].Line.Replace(Constants.CharWhiteSpace, FillColour, x, 1); x++;
-                DownNext(x, y);
-            }
+           
         }
 
     }

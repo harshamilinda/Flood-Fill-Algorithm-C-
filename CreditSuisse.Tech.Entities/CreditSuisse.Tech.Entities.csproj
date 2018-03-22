@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DataPoint.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Classes\DataLine.cs" />
     <Compile Include="Enums\Enums.cs" />
