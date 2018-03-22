@@ -20,7 +20,7 @@ namespace CreditSuisse.Tech.BusinessLogic
             var Positions = instructions.GetPositions();
             var DataPoint = new DataPoint { X = Positions[Axis.X1], Y = Positions[Axis.Y1] };
             if (IsValidDataPoint(DataPoint))
-                Octa(DataPoint);
+                FloodFill(DataPoint);
 
             return canvas;
         }
@@ -41,7 +41,7 @@ namespace CreditSuisse.Tech.BusinessLogic
         /// Flood Fill
         /// </summary>
         /// <param name="d">DataPoint</param>
-        private void Octa(DataPoint d)
+        private void FloodFill(DataPoint d)
         {
             var Items = new Stack<DataPoint>();
             if (char.IsWhiteSpace(Canvas[d.Y].Line[d.X]))
@@ -66,7 +66,7 @@ namespace CreditSuisse.Tech.BusinessLogic
 
             while (Items.Count > 0)
             {
-                Octa(Items.Pop());
+                FloodFill(Items.Pop());
             }
         }
 

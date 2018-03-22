@@ -14,14 +14,11 @@ namespace CreditSuisse.Tech.BusinessLogic
         public static CanvasBuilder Instance { get { return lazy.Value; } }
         private List<DataLine> CanvasContext { get; set; }
         private static Dictionary<ConsoleCommand, string> Instructions;
-        private CanvasBuilder()
-        {
-            Console.WriteLine("Initiated Canvas");
-            BuildCanvas(Instructions);
-        }
+        private CanvasBuilder() => BuildCanvas(Instructions);
+
         private void BuildCanvas(Dictionary<ConsoleCommand, string> instructions)
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString());
+            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) +2;
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
 
             CanvasContext = new List<DataLine> { };

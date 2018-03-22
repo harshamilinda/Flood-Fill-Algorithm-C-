@@ -26,12 +26,12 @@ namespace CreditSuisse.Tech.UnitTest
             
             List<DataLine> Expected = new List<DataLine>() {
 
-                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 20) },
-                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 20) },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 22) },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 22) },
 
             };
 

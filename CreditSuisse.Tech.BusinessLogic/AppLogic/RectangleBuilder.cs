@@ -7,7 +7,7 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    class RectangleBuilder : IGeometry
+    public class RectangleBuilder : IGeometry
     {
         public T BuildGeometry<T>(T canvas, Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {

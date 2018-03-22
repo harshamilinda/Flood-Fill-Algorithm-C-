@@ -26,8 +26,8 @@ namespace CreditSuisse.Tech
 
                 //TEST
                 Client.InvokeCommand("C 20 4");
-                Client.InvokeCommand("L 6 3 6 4");
                 Client.InvokeCommand("L 1 2 6 2");
+                Client.InvokeCommand("L 6 3 6 4");
                 Client.InvokeCommand("R 14 1 18 3");
                 Client.InvokeCommand("B 10 3 o");
                 //Client.InvokeCommand("B 13 3 o");
