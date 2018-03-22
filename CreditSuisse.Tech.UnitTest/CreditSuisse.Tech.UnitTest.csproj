@@ -49,14 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Canvas\Canvas.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Geometry\Shapes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Geometry\" />
     <Folder Include="Utility\" />
   </ItemGroup>
   <ItemGroup>

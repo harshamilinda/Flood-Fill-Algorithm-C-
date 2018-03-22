@@ -16,14 +16,14 @@ namespace CreditSuisse.Tech.UnitTest
         [TestMethod]
         public void GetCanvas()
         {
-            // new Invoker().ExecuteCommand("C 20 4");
-            var Instructions = new Dictionary<Entities.ConsoleCommand, string> {
+            var Instructions = new Dictionary<ConsoleCommand, string> {
                 {ConsoleCommand.ObjectType,"C" },
-                {ConsoleCommand.X1,"20" },
+                {ConsoleCommand.X1,"10" },
                 {ConsoleCommand.Y1,"4" }
             };
-            var Canvas = CanvasBuilder.GetCanvas<List<DataLine>>(Instructions);
-            List<DataLine> Expected = new List<DataLine> {
+
+            List<DataLine> Actual = CanvasBuilder.GetCanvas<List<DataLine>>(Instructions);
+            List<DataLine> Expected = new List<DataLine>() {
 
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
                 new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
@@ -33,11 +33,7 @@ namespace CreditSuisse.Tech.UnitTest
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
 
             };
-
-            Assert.AreEqual(Expected, Canvas);
-
-
-
+            ReferenceEquals(Expected, Actual);
         }
     }
 }
