@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,9 +56,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Canvas\" />
     <Folder Include="Geometry\" />
     <Folder Include="Utility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CreditSuisse.Tech.BusinessLogic\CreditSuisse.Tech.BusinessLogic.csproj">
+      <Project>{c61d464a-c30e-4c46-85df-063af218449a}</Project>
+      <Name>CreditSuisse.Tech.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreditSuisse.Tech.Domain\CreditSuisse.Tech.CommandHandler.csproj">
+      <Project>{03ee5e23-2430-4515-8cee-ce604c382d5a}</Project>
+      <Name>CreditSuisse.Tech.CommandHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CreditSuisse.Tech.Entities\CreditSuisse.Tech.Entities.csproj">
+      <Project>{92c571bd-377b-43ff-a828-c09ff51b0f47}</Project>
+      <Name>CreditSuisse.Tech.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

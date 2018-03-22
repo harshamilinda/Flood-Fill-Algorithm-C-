@@ -7,10 +7,10 @@ using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech.BusinessLogic
 {
-    public class DataLine
-    {
-        public StringBuilder Line { get; set; }
-    }
+    //public class DataLine
+    //{
+    //    public StringBuilder Line { get; set; }
+    //}
     public class Class1
     {
         public List<DataLine> Canvas { get; set; }
