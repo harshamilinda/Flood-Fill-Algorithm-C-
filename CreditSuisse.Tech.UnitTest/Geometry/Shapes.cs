@@ -37,7 +37,7 @@ namespace CreditSuisse.Tech.UnitTest.Geometry
                 
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
                 new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxx             |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxx            |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
                 new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
                 new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) }
@@ -45,7 +45,32 @@ namespace CreditSuisse.Tech.UnitTest.Geometry
             };
             Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
         }
-        
+        [TestMethod]
+        public void DrawVerticallLine()
+        {
+
+            var Instructions = new Dictionary<ConsoleCommand, string> {
+                {ConsoleCommand.ObjectType,"L" },
+                {ConsoleCommand.X1,"6" },
+                {ConsoleCommand.Y1,"3" },
+                {ConsoleCommand.X2,"6" },
+                {ConsoleCommand.Y2,"4" }
+            };
+            List<DataLine> Actual = new LineBuilder().BuildGeometry(Canvas, Instructions);
+
+            List<DataLine> Expected = new List<DataLine> {
+
+                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
+                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
+                new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxx            |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|     x            |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|     x            |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) }
+
+            };
+            Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
+        }
+
         private void GetCanvas()
         {
             var Instructions = new Dictionary<ConsoleCommand, string> {

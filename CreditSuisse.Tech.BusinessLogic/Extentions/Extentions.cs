@@ -40,9 +40,9 @@ namespace CreditSuisse.Tech.BusinessLogic
             {
                 return new Dictionary<Axis, int>()
                 {
-                    {Axis.X1,instructions[ConsoleCommand.X1].ToInt()-1 },
+                    {Axis.X1,instructions[ConsoleCommand.X1].ToInt() },
                     {Axis.Y1,instructions[ConsoleCommand.Y1].ToInt() },
-                    {Axis.X2,instructions[ConsoleCommand.X2].ToInt()-1 },
+                    {Axis.X2,instructions[ConsoleCommand.X2].ToInt() },
                     {Axis.Y2,instructions[ConsoleCommand.Y2].ToInt() }
                 };
             }
