@@ -18,22 +18,25 @@ namespace CreditSuisse.Tech.UnitTest
         {
             var Instructions = new Dictionary<ConsoleCommand, string> {
                 {ConsoleCommand.ObjectType,"C" },
-                {ConsoleCommand.X1,"10" },
+                {ConsoleCommand.X1,"20" },
                 {ConsoleCommand.Y1,"4" }
             };
 
             List<DataLine> Actual = CanvasBuilder.GetCanvas<List<DataLine>>(Instructions);
+            
             List<DataLine> Expected = new List<DataLine>() {
 
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 20) },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 20) },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",18).Insert(19,"|") },
+                new DataLine(){ Line= new StringBuilder().Insert(0, "-", 20) },
 
             };
-            ReferenceEquals(Expected, Actual);
+
+            Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
+
         }
     }
 }
