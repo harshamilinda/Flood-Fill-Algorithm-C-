@@ -11,7 +11,18 @@ namespace CreditSuisse.Tech
     {
         public void InvokeCommand(string commandText)
         {
-            new Invoker().ExecuteCommand(commandText);
+            try
+            {
+                new Invoker().ExecuteCommand(commandText);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+            }
             
         }
     }
