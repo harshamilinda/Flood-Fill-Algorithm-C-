@@ -35,12 +35,12 @@ namespace CreditSuisse.Tech.UnitTest.Geometry
 
             List<DataLine> Expected = new List<DataLine> {
 
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|                    |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxx              |")},
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) }
+                new DataLine{ Line= new StringBuilder().Insert(0, "|                    |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|                    |")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")}
 
             };
             Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
@@ -60,12 +60,12 @@ namespace CreditSuisse.Tech.UnitTest.Geometry
 
             List<DataLine> Expected = new List<DataLine> {
 
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) },
-                new DataLine{ Line= new StringBuilder().Insert(0, "|").Insert(1, " ",20).Insert(21,"|") },
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|                    |") },
                 new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxx              |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|     x              |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|     x              |")},
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) }
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")}
 
             };
             Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
@@ -85,12 +85,35 @@ namespace CreditSuisse.Tech.UnitTest.Geometry
 
             List<DataLine> Expected = new List<DataLine> {
 
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) },
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|             xxxxx  |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxx       x   x  |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|     x       xxxxx  |")},
                 new DataLine{ Line= new StringBuilder().Insert(0, "|     x              |")},
-                new DataLine{ Line= new StringBuilder().Insert(0, "-", 22) }
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")}
+
+            };
+            Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
+        }
+        [TestMethod]
+        public void Fill()
+        {
+            var Instructions = new Dictionary<ConsoleCommand, string> {
+                {ConsoleCommand.ObjectType,"B" },
+                {ConsoleCommand.X1,"10" },
+                {ConsoleCommand.Y1,"3" },
+                {ConsoleCommand.Colour,"o" }
+            };
+            List<DataLine> Actual = new FillUtility().Fill(Canvas, Instructions);
+
+            List<DataLine> Expected = new List<DataLine> {
+
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|oooooooooooooxxxxxoo|")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|xxxxxxooooooox   xoo|")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|     xoooooooxxxxxoo|")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "|     xoooooooooooooo|")},
+                new DataLine{ Line= new StringBuilder().Insert(0, "----------------------")}
 
             };
             Expected.ForEach(x => Assert.AreEqual(x.Line.ToString(), Actual[Expected.IndexOf(x)].Line.ToString()));
