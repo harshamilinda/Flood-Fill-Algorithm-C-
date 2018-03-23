@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CreditSuisse.Tech.CommandHandler;
 using CreditSuisse.Tech.Entities;
 
@@ -14,11 +10,13 @@ namespace CreditSuisse.Tech
         {
             try
             {
+                if (commandText.ToUpper().Equals("Q")) Environment.Exit(0);
                 new Invoker().ExecuteCommand(commandText);
             }
-            catch(Exception ex)
+            catch
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("The command is invalid. Please follow the instructions.");
+                Console.WriteLine(Constants.HelpMenu);
             }
             finally
             {
@@ -26,7 +24,7 @@ namespace CreditSuisse.Tech
             }
             
         }
-        public void PrintHeader() => Console.WriteLine(Constants.ConsoleHeader);
+        public void PrintHeader() => Console.WriteLine(Constants.CONSOLEHEADER);
         public void PrintHelpMenu() => Console.WriteLine(Constants.HelpMenu);
         private void Undo()
         {
@@ -34,7 +32,7 @@ namespace CreditSuisse.Tech
         }
         private void Reset()
         {
-            //TODO: IMplement Reset Command
+            //TODO: Implement Reset Command
         }
     }
 }

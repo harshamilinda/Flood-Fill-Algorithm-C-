@@ -45,7 +45,6 @@
     <Compile Include="ApplicationLogic\RectangleBuilder.cs" />
     <Compile Include="BusinessObjects\Canvas.cs" />
     <Compile Include="BusinessObjects\PaintBucket.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ApplicationLogic\DrawUtility.cs" />
     <Compile Include="Extentions\Extentions.cs" />
     <Compile Include="Interfaces\IDrawable.cs" />

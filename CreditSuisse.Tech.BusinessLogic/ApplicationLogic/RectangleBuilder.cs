@@ -21,8 +21,8 @@ namespace CreditSuisse.Tech.BusinessLogic
             var Positions = instructions.GetPositions();
             var Length = (Positions[Axis.X2] - Positions[Axis.X1]) + 1;
            
-            canvas[Positions[Axis.Y1]].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X1], Length);
-            canvas[Positions[Axis.Y2]].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X1], Length);
+            canvas[Positions[Axis.Y1]].Line.Replace(Constants.CHARWHITESPACE, Constants.LINECOLOUR, Positions[Axis.X1], Length);
+            canvas[Positions[Axis.Y2]].Line.Replace(Constants.CHARWHITESPACE, Constants.LINECOLOUR, Positions[Axis.X1], Length);
 
             return canvas;
         }
@@ -32,11 +32,12 @@ namespace CreditSuisse.Tech.BusinessLogic
             var Index = Positions[Axis.Y2] - Positions[Axis.Y1];
             var Length = 1;
 
-            canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X1], Length);
-            canvas[Index].Line.Replace(Constants.CharWhiteSpace, Constants.LineColour, Positions[Axis.X2], Length);
+            canvas[Index].Line.Replace(Constants.CHARWHITESPACE, Constants.LINECOLOUR, Positions[Axis.X1], Length);
+            canvas[Index].Line.Replace(Constants.CHARWHITESPACE, Constants.LINECOLOUR, Positions[Axis.X2], Length);
 
 
             return canvas;
         }
+        
     }
 }

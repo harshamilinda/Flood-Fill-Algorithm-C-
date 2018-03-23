@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CreditSuisse.Tech.BusinessLogic;
 using CreditSuisse.Tech.Entities;
 
@@ -23,8 +21,6 @@ namespace CreditSuisse.Tech.CommandHandler
 
         private bool ValidateDrawCommand(string commandText)
         {
-            //TODO: add proper validations
-            //X1,X2,Y1,Y2 - int , cannot < 0,  x1 shoud < x1, y1 should <y2
             if (String.IsNullOrWhiteSpace(commandText)) return false;
             return true;
         }
@@ -33,16 +29,22 @@ namespace CreditSuisse.Tech.CommandHandler
 
         private T InitializeCommand<T>(string[] commandText) where T : Dictionary<ConsoleCommand, string>, new()
         {
-            
             Dictionary<ConsoleCommand, string> Instructions = new Dictionary<ConsoleCommand, string>();
-            var Commands = Enum.GetValues(typeof(ConsoleCommand)).Cast<ConsoleCommand>().GetEnumerator();
-            var Values = commandText.GetEnumerator();
-            while (Commands.MoveNext() && Values.MoveNext())
+            try
             {
-                Instructions.Add(Commands.Current, Values.Current.ToString());
+               
+                var Commands = Enum.GetValues(typeof(ConsoleCommand)).Cast<ConsoleCommand>().GetEnumerator();
+                var Values = commandText.GetEnumerator();
+                while (Commands.MoveNext() && Values.MoveNext())
+                {
+                    Instructions.Add(Commands.Current, Values.Current.ToString());
+                }
+                if (commandText[commandText.Length - 1].IsFillCommand()) Instructions.Add(ConsoleCommand.Colour, commandText[commandText.Length - 1]);
             }
-
-            if(commandText[commandText.Length -1].IsFillCommand()) Instructions.Add(ConsoleCommand.Colour, commandText[commandText.Length - 1]);
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
             return (T)Instructions;
 
         }

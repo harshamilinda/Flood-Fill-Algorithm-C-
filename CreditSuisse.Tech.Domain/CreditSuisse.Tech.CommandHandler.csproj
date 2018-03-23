@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Command\CommandBuilder.cs" />
     <Compile Include="Command\CommandUtility.cs" />
     <Compile Include="Command\ICommand.cs" />

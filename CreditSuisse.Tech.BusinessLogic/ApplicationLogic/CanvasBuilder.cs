@@ -18,18 +18,19 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         private void BuildCanvas(Dictionary<ConsoleCommand, string> instructions)
         {
+            
             var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) +2;
             var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
 
             CanvasContext = new List<DataLine> { };
-            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CanvasHorizontalLine.ToString(), X1) });
+            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CANVASHORIZONTALLINE.ToString(), X1) });
             Y1.Times(() => CanvasContext.Add(new DataLine
             {
                 Line = new StringBuilder()
-                            .Insert(0, Constants.CanvasVerticalLine)
-                            .Insert(1, " ", X1 - 2).Insert(X1 - 1, Constants.CanvasVerticalLine)
+                            .Insert(0, Constants.CANVASVERTICALLINE)
+                            .Insert(1, " ", X1 - 2).Insert(X1 - 1, Constants.CANVASVERTICALLINE)
             }));
-            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CanvasHorizontalLine.ToString(), X1) });
+            CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CANVASHORIZONTALLINE.ToString(), X1) });
         }
         public static T GetCanvas<T>(Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
@@ -38,6 +39,7 @@ namespace CreditSuisse.Tech.BusinessLogic
             return Instance.CanvasContext as T;
 
         }
+       
     }
 
 }
