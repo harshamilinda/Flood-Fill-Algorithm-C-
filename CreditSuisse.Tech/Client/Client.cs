@@ -13,9 +13,9 @@ namespace CreditSuisse.Tech
                 if (commandText.ToUpper().Equals("Q")) Environment.Exit(0);
                 new Invoker().ExecuteCommand(commandText);
             }
-            catch
+            catch(Exception excetion)
             {
-                Console.WriteLine("The command is invalid. Please follow the instructions.");
+                Console.WriteLine("The command is invalid: {0}  Please follow the instructions.", excetion.Message);
                 Console.WriteLine(Constants.HelpMenu);
             }
             finally

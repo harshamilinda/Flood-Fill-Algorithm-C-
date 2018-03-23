@@ -14,10 +14,17 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         protected void Draw(IGeometry geometryBuilder,Dictionary<ConsoleCommand, string> instructions)
         {
-            var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
-            var Geomatry = geometryBuilder.BuildGeometry(Canvas, instructions);
-            DrawUtility.Draw(Geomatry);
+            try
+            {
+                var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
+                var Geomatry = geometryBuilder.BuildGeometry(Canvas, instructions);
+                DrawUtility.Draw(Geomatry);
 
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
      
