@@ -15,29 +15,17 @@ namespace CreditSuisse.Tech
         static void Main(string[] args)
         {
             var Client = new Client();
-            string CommandText = string.Empty;
+            Client.PrintHeader();
+            Client.PrintHelpMenu();
 
             Boolean IsRunning = true;
             while (IsRunning)
             {
-                CommandText = Console.ReadLine();
-                Client.InvokeCommand(CommandText);
-
+                Client.InvokeCommand(Console.ReadLine());
             }
             Console.Read();
         }
-        private void PrintHelpMenu()
-        {
-            //TODO: Print Help Menu
-        }
-        private void Undo()
-        {
-            //TODO: Implement Undo Command
-        }
-        private void Reset()
-        {
-            //TODO: IMplement Reset Command
-        }
+        
         
         
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CreditSuisse.Tech.CommandHandler;
+using CreditSuisse.Tech.Entities;
 
 namespace CreditSuisse.Tech
 {
@@ -24,6 +25,16 @@ namespace CreditSuisse.Tech
 
             }
             
+        }
+        public void PrintHeader() => Console.WriteLine(Constants.ConsoleHeader);
+        public void PrintHelpMenu() => Console.WriteLine(Constants.HelpMenu);
+        private void Undo()
+        {
+            //TODO: Implement Undo Command
+        }
+        private void Reset()
+        {
+            //TODO: IMplement Reset Command
         }
     }
 }
