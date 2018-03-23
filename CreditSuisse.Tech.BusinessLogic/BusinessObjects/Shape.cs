@@ -12,22 +12,15 @@ namespace CreditSuisse.Tech.BusinessLogic
         private IDrawable DrawUtility { get; set; }
         public Shape() => DrawUtility = new DrawUtility();
 
-        protected void Draw(IGeometry geometryBuilder,Dictionary<ConsoleCommand, string> instructions)
+        protected void Draw(IGeometry geometryBuilder, Dictionary<ConsoleCommand, string> instructions)
         {
-            try
-            {
-                var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
-                var Geomatry = geometryBuilder.BuildGeometry(Canvas, instructions);
-                DrawUtility.Draw(Geomatry);
-
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            var Canvas = BusinessLogic.CanvasBuilder.GetCanvas<List<DataLine>>(instructions);
+            if (Canvas == null) throw new Exception("Please create a new canvas");
+            var Geomatry = geometryBuilder.BuildGeometry(Canvas, instructions);
+            DrawUtility.Draw(Geomatry);
         }
 
-     
+
     }
-    
+
 }

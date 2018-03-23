@@ -13,12 +13,14 @@ namespace CreditSuisse.Tech.BusinessLogic
 
         public static CanvasBuilder Instance { get { return lazy.Value; } }
         private List<DataLine> CanvasContext { get; set; }
-        private static Dictionary<ConsoleCommand, string> Instructions;
+        private Dictionary<ConsoleCommand, string> Instructions;
         private CanvasBuilder() => BuildCanvas(Instructions);
 
         private void BuildCanvas(Dictionary<ConsoleCommand, string> instructions)
         {
-            var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) + 2;
+            if (!(CanvasContext == null && Instructions == null))
+            {
+                var X1 = int.Parse(instructions[ConsoleCommand.X1].ToString()) + 2;
                 var Y1 = int.Parse(instructions[ConsoleCommand.Y1].ToString());
 
                 CanvasContext = new List<DataLine> { };
@@ -30,16 +32,27 @@ namespace CreditSuisse.Tech.BusinessLogic
                                 .Insert(1, " ", X1 - 2).Insert(X1 - 1, Constants.CANVASVERTICALLINE)
                 }));
                 CanvasContext.Add(new DataLine { Line = new StringBuilder().Insert(0, Constants.CANVASHORIZONTALLINE.ToString(), X1) });
-           
+                
+            }
+
         }
         public static T GetCanvas<T>(Dictionary<ConsoleCommand, string> instructions) where T : List<DataLine>, new()
         {
             if (instructions[ConsoleCommand.ObjectType].ToString() == ActionType.C.ToString())
-                Instructions = instructions;
+            {
+                Instance.Instructions = instructions;
+                if (CanvasBuilder.lazy.IsValueCreated)
+                {
+                    lazy.Value.BuildCanvas(instructions);
+                }
+            }
             return Instance.CanvasContext as T;
+            
+            
+           
 
         }
-       
+
     }
 
 }

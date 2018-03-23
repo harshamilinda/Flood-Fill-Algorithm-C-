@@ -32,7 +32,6 @@ namespace CreditSuisse.Tech.CommandHandler
             Dictionary<ConsoleCommand, string> Instructions = new Dictionary<ConsoleCommand, string>();
             try
             {
-               
                 var Commands = Enum.GetValues(typeof(ConsoleCommand)).Cast<ConsoleCommand>().GetEnumerator();
                 var Values = commandText.GetEnumerator();
                 while (Commands.MoveNext() && Values.MoveNext())
